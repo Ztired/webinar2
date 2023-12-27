@@ -45,24 +45,44 @@
 
 // Задача 3: Напишите программу, которая принимает на вход целое число из отрезка [10, 99] и показывает наибольшую цифру числа.
 
+// Console.Write("Введите число: ");
+// int number = Convert.ToInt32(Console.ReadLine());
+
+// if (number >= 10 && number <= 99)
+// {
+//     int number1 = number / 10;
+//     int number2 = number % 10;
+//     if (number1 >= number2)
+//     {
+//         Console.WriteLine($"Наибольшая цифра числа `{number}` равна `{number1}`");
+//     }
+//     else
+//     {
+//         Console.WriteLine($"Наибольшая цифра числа `{number}` равна `{number2}`");
+//     }
+// }
+// else
+// {
+//     Console.WriteLine($"Число {number} лежит вне отрезка `10` и `99`");
+// }
+
+// Задача 4: Напишите программу, которая на вход принимает натуральное число N, а на выходе показывает его цифры через запятую.
+
 Console.Write("Введите число: ");
 int number = Convert.ToInt32(Console.ReadLine());
+int numberResult = number;
+int numberRevert = 0;
 
-if (number >= 10 && number <= 99)
+while (number > 9)
 {
-    int number1 = number / 10;
-    int number2 = number % 10;
-    if (number1 >= number2)
-    {
-        Console.WriteLine($"Наибольшая цифра числа `{number}` равна `{number1}`");
-    }
-    else
-    {
-        Console.WriteLine($"Наибольшая цифра числа `{number}` равна `{number2}`");
-    }
+    numberRevert = number % 10 + 10 * numberRevert;
+    number = number / 10;
 }
-else
-{
-    Console.WriteLine($"Число {number} лежит вне отрезка `10` и `99`");
-}
+numberRevert = number + numberRevert * 10;
 
+while (numberRevert > 9)
+{
+    Console.Write($" {numberRevert % 10},");
+    numberRevert = numberRevert / 10;
+}
+Console.WriteLine($" {numberRevert}");
